@@ -15,6 +15,9 @@ requests = "^2.28.1"
 [tool.poetry.scripts]
 serve = "eudata_server.server:serve"
 
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.19.4"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

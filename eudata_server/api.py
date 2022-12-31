@@ -1,4 +1,5 @@
 import json
+import rich
 import pandas as pd
 from functools import reduce
 from fastapi import FastAPI, Request, HTTPException
@@ -10,7 +11,11 @@ from fastapi.exceptions import (
 )
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from eudata_server.backend.sdmx.base import dfquery
+from eudata_server.backend.sdmx.base import (
+    dfquery, get_time_period,
+    get_text_unit, setup_chrmap
+)
+
 from eudata_server.tools.paths import (
     static_dir, templates_dir, css_dir,
     js_dir, sass_dir, data_dir
@@ -73,13 +78,21 @@ async def tab(request: Request, dataflow_id: str):
         })
 
 @app.get("/maps/{dataflow_id}", response_class=HTMLResponse)
-async def read_item(request: Request, dataflow_id: str):
-    try:
-        df = dfquery(dataflow_id)
-        columns = df.columns.tolist()
-        textCode = df["UNIT"].unique()[0]
-    except:
-        raise StarletteHTTPException(status_code=500, detail="Woops ! No data found.")
+async def maps(request: Request, dataflow_id: str):
+    # try:
+    df = dfquery(dataflow_id)
+    mapdata = setup_chrmap(df)
+
+    u_names = dfu.to_dict(orient="records")
+    
+    unit_names = {}
+    for u in u_names:
+        if u["code"] in mapdata["units"]:
+            unit_names[u["code"]] = u["description"]
+
+    # except Exception as err:
+    #     print(err)
+    #     raise StarletteHTTPException(status_code=500, detail="Woops ! No data found.")
 
     return templates.TemplateResponse(
         "maps.html",
@@ -87,8 +100,8 @@ async def read_item(request: Request, dataflow_id: str):
             "request": request,
             "dataflow_id": dataflow_id,
             "title": "Maps",
-            "columns": columns,
-            "textUnit": textUnit,
+            "unit_names": unit_names,
+            **mapdata,
         }
     )
 

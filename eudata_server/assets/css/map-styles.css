@@ -6,10 +6,24 @@ body.map-body {
 }
 
 svg.map-svg {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+span.map-buttons-container {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
+    width: 100vw;
+    height: 3vh;
+    background-color: #604aa4;
+}
+
+span.map-container {
+    position: absolute;
+    top: 3vh;
+    left: 0;
+    width: 100vw;
+    height: 97vh;
 }
