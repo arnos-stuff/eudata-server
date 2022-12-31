@@ -1,0 +1,82 @@
+[
+    {
+        "category_scheme_name":"Economy and finance",
+        "category_scheme_id":"t_economy"
+    },
+    {
+        "category_scheme_name":"Population and social conditions",
+        "category_scheme_id":"t_popul"
+    },
+    {
+        "category_scheme_name":"International trade in goods",
+        "category_scheme_id":"t_external"
+    },
+    {
+        "category_scheme_name":"Environment and energy",
+        "category_scheme_id":"t_envir"
+    },
+    {
+        "category_scheme_name":"Transport",
+        "category_scheme_id":"t_transp"
+    },
+    {
+        "category_scheme_name":"Economy and finance",
+        "category_scheme_id":"economy"
+    },
+    {
+        "category_scheme_name":"Agriculture, forestry and fisheries",
+        "category_scheme_id":"t_agric"
+    },
+    {
+        "category_scheme_name":"Industry, trade and services",
+        "category_scheme_id":"icts"
+    },
+    {
+        "category_scheme_name":"Science, technology, digital society",
+        "category_scheme_id":"t_science"
+    },
+    {
+        "category_scheme_name":"International trade",
+        "category_scheme_id":"external"
+    },
+    {
+        "category_scheme_name":"Industry, trade and services",
+        "category_scheme_id":"t_icts"
+    },
+    {
+        "category_scheme_name":"Transport",
+        "category_scheme_id":"transp"
+    },
+    {
+        "category_scheme_name":"Environment and energy",
+        "category_scheme_id":"envir"
+    },
+    {
+        "category_scheme_name":"General and regional statistics",
+        "category_scheme_id":"t_general"
+    },
+    {
+        "category_scheme_name":"General and regional statistics",
+        "category_scheme_id":"general"
+    },
+    {
+        "category_scheme_name":"Science, technology, digital society",
+        "category_scheme_id":"science"
+    },
+    {
+        "category_scheme_name":"Agriculture, forestry and fisheries",
+        "category_scheme_id":"agric"
+    },
+    {
+        "category_scheme_name":"Cross cutting topics",
+        "category_scheme_id":"cc"
+    },
+    {
+        "category_scheme_name":"Tables on EU policy",
+        "category_scheme_id":"tb_eu"
+    },
+    {
+        "category_scheme_name":"Population and social conditions",
+        "category_scheme_id":"popul"
+    }
+]

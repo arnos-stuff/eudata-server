@@ -1,0 +1,21 @@
+@use "ag-theme-balham-dark/sass/ag-theme-balham-dark-mixin" as ag-mixin;
+
+.custom-ag-theme {
+    @include ag-mixin.ag-theme-balham-dark((
+        balham-active-color: #ca72cb,
+        foreground-color: #f8d5f2,
+        background-color: #7667a3,
+        header-background-color: #260a7b,
+        subheader-background-color: #111,
+        control-panel-background-color: #202020,
+        border-color: #3e3042,
+        odd-row-background-color: #6551a2,
+        row-hover-color: #c35bc89c,
+        column-hover-color: #3d4749,
+        input-border-color: #f0f0f0
+
+    ));
+    height: 100vh;
+    opacity: 0.75;
+    stroke-opacity: 1.0;
+}

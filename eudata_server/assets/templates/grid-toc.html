@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta
+     name="viewport"
+     content="width=device-width, initial-scale=1.0"
+   />
+   
+   <link rel="stylesheet" href="css/arno-web-styles.css">
+   <link rel="stylesheet" href="css/dropdown.css">
+   <link rel="stylesheet" href="css/tippy/translucent-lgt-purple.css">
+   <title>Table of contents</title>
+   <!-- Include the JS for AG Grid -->
+   <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+   <!-- Include the core CSS, this is needed by the grid -->
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"/>
+   <!-- Include the theme CSS, only need to import the theme you are going to use -->
+   <link rel="stylesheet" href="css/grid-theme.css">
+ </head>
+ <body class="dark-body">
+   <!-- Button to demonstrate calling the grid's API. -->
+    <div class="grid-buttons">
+    <button id="deselect-button" class="pink-button" onclick="deselect()">
+      <div>Deselect Rows</div>
+        <img src="static/images/d.svg" alt="Maps visualization" class="pink-btn-img"/>
+    </button>
+    <button id="unfilter-button" class="pink-button" onclick="unfilter()">
+      <div>Remove filters</div>
+        <img src="static/images/r.svg" alt="Maps visualization" class="pink-btn-img"/>
+    </button>
+    <button id="gototab-button" class="pink-button" onclick="gototab()">
+      <div>Go to Table</div>
+      <img src="static/images/tb.svg" alt="Maps visualization" class="pink-btn-img"/>
+    </button>
+    <button id="gotomap-button" class="pink-button" onclick="gotomap()">
+        <div>Go to Map</div>
+        <img src="static/images/m.svg" alt="Maps visualization" class="pink-btn-img"/>
+    </button>
+    <button class="c-pink-button">
+      <div>Filter</div>
+      <img src="static/images/ft.svg" alt="Filtering options" class="c-pink-btn-img"/>
+    </button> 
+  </div>
+    <template id="example">
+      <div class="c-user-menu">
+        <strong class="c-user-menu__user-name">Choose a filter</strong>
+        {% for name in catnames %}
+          <button class="c-user-menu__menu-btn" onclick="filterbyscheme('{{ name }}')">{{ name }}</button>
+        {% endfor %}
+      </div>
+    </template>
+    
+   <!-- The div that will host the grid. ag-theme-alpine is the theme. -->
+   <!-- The gid will be the size that this element is given. -->
+   <div id="myGrid" class="custom-ag-theme" style="width: 100%;"></div>
+   <script type="text/javascript">
+       // Function to demonstrate calling grid's API
+       function deselect(){
+          gridOptions.api.deselectAll()
+       }
+
+       function unfilter(){
+          gridOptions.api.setFilterModel(null);
+       }
+
+       function gotomap() {
+          rows = gridOptions.api.getSelectedRows();
+          console.log(rows);
+          if (rows.length == 0) {
+            alert("Please select at least one row");
+            return;
+          }
+          else if (rows.length > 1) {
+            alert("Please select only one row");
+            return;
+          }
+          else {
+            row = rows[0];
+          }
+          console.log(row);
+          window.location.href = "http://localhost:8000/maps/"+row["Dataflow id"].toLowerCase();
+       }
+
+       function gototab() {
+          rows = gridOptions.api.getSelectedRows();
+          console.log(rows);
+          if (rows.length == 0) {
+            alert("Please select at least one row");
+            return;
+          }
+          else if (rows.length > 1) {
+            alert("Please select only one row");
+            return;
+          }
+          else {
+            row = rows[0];
+          }
+          console.log(row);
+          window.location.href = "http://localhost:8000/tab/"+row["Dataflow id"].toLowerCase();
+       }
+
+       function filterbyscheme(category_scheme_name) {
+          gridOptions.api.setFilterModel(null);
+          gridOptions.api.setFilterModel({
+            "Category scheme name": {
+              "type": "equals",
+              "filter": category_scheme_name,
+              "filterType": "text"
+            }
+          });
+       }
+
+       // Grid Options are properties passed to the grid
+       const gridOptions = {
+         // each entry here represents one column
+         columnDefs: [
+            { field: "Category scheme id", hide: true},
+            { field: "Category scheme name", minWidth: window.innerWidth*0.3, suppressSizeToFit: true},
+            { field: "Category scheme sub-level-1 id", hide: true},
+            { field: "Category scheme sub-level-1 name"},
+            { field: "Category scheme sub-level-2 id", hide: true},
+            { field: "Category scheme sub-level-2 name"},
+            { field: "Category scheme sub-level-3 id", hide: true},
+            { field: "Category scheme sub-level-3 name"},
+            { field: "Category scheme sub-level-4 id", hide: true},
+            { field: "Category scheme sub-level-4 name"},
+            { field: "Category scheme sub-level-5 id", hide: true},
+            { field: "Category scheme sub-level-5 name"},
+            { field: "Category scheme sub-level-6 id", hide: true},
+            { field: "Category scheme sub-level-6 name", hide: true},
+            { field: "Category scheme nested id", hide: true},
+            { field: "Dataflow id", hide: true},
+            { field: "Category id", hide: true},
+            { field: "Category parent id", hide: true},
+            { field: "Dataflow name", suppressSizeToFit: true, minWidth: window.innerWidth*0.3 , wrapText: true, autoHeight: true},
+            { field: "Dataflow description"},
+            { field: "Category nested id", hide: true}
+          ],
+          
+         // default col def properties get applied to all columns
+         defaultColDef: {sortable: true, filter: true, resizable: true},
+
+         rowSelection: 'multiple', // allow rows to be selected
+         animateRows: true, // have rows animate to new positions when sorted
+
+         // example event handler
+         onCellClicked: params => {
+           console.log('cell was clicked', params)
+         }
+       };
+
+       // get div to host the grid
+       const eGridDiv = document.getElementById("myGrid");
+       // new grid instance, passing in the hosting DIV and Grid Options
+       new agGrid.Grid(eGridDiv, gridOptions);
+
+       // Fetch data from server
+       fetch("static/data/toc.json")
+       .then(response => response.json())
+       .then(data => {
+         // load fetched data into grid
+         gridOptions.api.setRowData(data);
+         gridOptions.api.sizeColumnsToFit();
+       });
+   </script>
+   <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+   <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+   <script>
+    // With the above scripts loaded, you can call `tippy()` with a CSS
+    // selector and a `content` prop:
+    
+    unfilterbtn = tippy('#unfilter-button', {
+      content: 'Remove all filters and show all rows',
+      allowHTML: true,
+      inertia: true,
+      interactive: true,
+      theme: 'translucent-lgt-purple'
+    });
+    deselectbtn = tippy('#deselect-button', {
+      content: 'Remove your row selection',
+      allowHTML: true,
+      inertia: true,
+      interactive: true,
+      theme: 'translucent-lgt-purple'
+    });
+    gotomapbtn = tippy('#gotomap-button', {
+      content: 'Opens the map for the selected row',
+      inertia: true,
+      interactive: true,
+      theme: 'translucent-lgt-purple'
+    });
+
+    gototabbtn = tippy('#gototab-button', {
+      content: 'Opens the detailed dataset for the selected row',
+      inertia: true,
+      interactive: true,
+      theme: 'translucent-lgt-purple'
+    });
+
+    // dropdown menu using tippy
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+    const template = document.getElementById('example')
+    const container = document.createElement('div')
+      container.appendChild(document.importNode(template.content, true))
+
+    tippy('.c-pink-button', {
+      content: container.innerHTML,
+      trigger: 'mouseenter', // mouseenter, click, focus; manual.
+      placement: 'bottom-end',
+      arrow: true,
+      theme: 'translucent-lgt-purple',
+      // arrowType: 'round',
+      animation: 'scale',
+      duration: [250, 200],
+      distance: 12,
+      interactive: true,
+      showOnInit: true, // to ease styling
+      allowHTML: true,
+    });
+    });
+  </script>
+  </body>
+</html>

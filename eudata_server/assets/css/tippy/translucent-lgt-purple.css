@@ -1,0 +1,36 @@
+.tippy-box[data-theme~=translucent-lgt-purple] {
+    background-color: #604aa4cd
+}
+
+.tippy-box[data-theme~=translucent-lgt-purple]>.tippy-arrow {
+    width: 14px;
+    height: 14px
+}
+
+.tippy-box[data-theme~=translucent-lgt-purple][data-placement^=top]>.tippy-arrow:before {
+    border-width: 7px 7px 0;
+    border-top-color: #604aa4cd
+}
+
+.tippy-box[data-theme~=translucent-lgt-purple][data-placement^=bottom]>.tippy-arrow:before {
+    border-width: 0 7px 7px;
+    border-bottom-color: #604aa4cd
+}
+
+.tippy-box[data-theme~=translucent-lgt-purple][data-placement^=left]>.tippy-arrow:before {
+    border-width: 7px 0 7px 7px;
+    border-left-color: #604aa4cd
+}
+
+.tippy-box[data-theme~=translucent-lgt-purple][data-placement^=right]>.tippy-arrow:before {
+    border-width: 7px 7px 7px 0;
+    border-right-color: #604aa4cd
+}
+
+.tippy-box[data-theme~=translucent-lgt-purple]>.tippy-backdrop {
+    background-color: #604aa4cd
+}
+
+.tippy-box[data-theme~=translucent-lgt-purple]>.tippy-svg-arrow {
+    fill: #604aa4cd
+}

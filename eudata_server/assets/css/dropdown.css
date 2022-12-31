@@ -1,0 +1,97 @@
+.c-avatar {
+    border: none;
+  
+    background: none;
+    
+    cursor: pointer;
+  }
+
+.c-pink-button {
+    display: inline-block;
+    border: none;
+    background-color: #604aa4;
+    color: #c485c4;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font: inherit;
+    max-height: clamp(30vh, 40vh , 50vmin);
+    font-size: calc(0.08 * clamp(30vh, 40vh , 100px));
+}
+
+.c-pink-button:hover {
+    background-color: #635883;
+    color: #ec61ec;
+    font: inherit;
+    border: none;
+    font-size: calc(0.08 * clamp(30vh, 40vh , 100px));
+}
+
+img.c-pink-btn-img {
+    max-width: calc(0.7 * clamp(30vh, 40vh , 100px));
+    max-height: calc(0.7 * clamp(30vh, 40vh , 100px));
+}
+
+
+  .c-avatar__icon {
+    font-size: 1.7rem;
+    color: hsl(293, 37%, 73%);
+  }
+  
+  /**
+   * Popover Element AKA Tippy
+   */
+
+    /* .tippy-tooltip.arno-theme {
+        background-color: #604aa4 !important;
+        color: #c485c4 !important;
+    } */
+  
+  .c-user-menu {
+    width: 14.5rem;
+    text-align: left;
+    /* background-color: #604aa4; */
+  }
+  
+  .c-user-menu__user-name {
+    display: block;
+    padding-bottom: 1rem;
+    /* border-bottom: 1px solid #260a7b; */
+    /* color: #2f1381; */
+    text-align: center;
+  }
+  
+  .c-user-menu__user-name,
+  .c-user-menu__menu-item {
+    padding: 0.5rem;
+  }
+  
+  .c-user-menu__menu-item {
+    display: block;
+  
+    text-decoration: none;
+  }
+
+  .c-user-menu__menu-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    /* background-color: #604aa4; */
+    color: #c485c4;
+  }
+
+  .c-user-menu__menu-btn:hover {
+    background: rgba(195, 91, 200, 0.6117647059);
+  }
+
+  .c-user-menu__menu-item:hover {
+    background: hsl(289, 66%, 87%);
+  }
+  
+  .c-user-menu__menu-item:first-of-type {
+    border-top: 1px solid #260a7b;
+    padding-top: 1rem;
+  }

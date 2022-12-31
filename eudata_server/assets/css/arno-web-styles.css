@@ -1,0 +1,166 @@
+
+body.globe-body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+body.dark-body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url(../static/images/PurpleWave-Dark.png);
+    font-family: "Roboto", sans-serif;
+}
+
+/* body.error-body {
+    padding: 0px;
+    margin: 0px;
+    
+    height: 100vh;
+    width: 100vw;
+} */
+
+.vanta-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  }
+
+.vanta-body-container {
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.error-title {
+    padding: 0px;
+    margin: 30%;
+    top: 30%;
+    font-family: "Playfair Display", "Roboto", sans-serif;
+    max-width: 100vw;
+    max-height: 100vh;
+    height: 100%;
+    font-size: 50vmin;
+    font-weight: 700;
+    color: rgba(206, 18, 174, 0.79);
+    text-shadow: 0.0px 10.0px 0.02px rgba(245, 150, 222, 0.747), 9.8px 2.1px 0.02px rgba(157, 52, 96, 0.747), 4.2px -9.1px 0.02px rgba(144, 83, 174, 0.747), -8.0px -6.0px 0.02px rgba(157, 52, 96, 0.747), -7.6px 6.5px 0.02px rgba(157, 52, 96, 0.747), 4.8px 8.8px 0.02px rgba(157, 52, 96, 0.747), 9.6px -2.8px 0.02px rgba(249, 9, 109, 0.747), -0.7px -10.0px 0.02px rgba(85, 8, 117, 0.803)
+}
+
+.error-subtitle {
+    padding: 0px;
+    margin: 35%;
+    top: 50%;
+    font-family: "Roboto", sans-serif;
+    max-width: 100vw;
+    max-height: 100vh;
+    font-size: 10vmin;
+    font-weight: 400;
+    color: rgba(238, 4, 211, 0.79);
+    text-shadow: 0.0px 5.0px 0.12px rgba(245, 150, 222, 0.747), 4.6px 2.1px 0.12px rgba(157, 52, 96, 0.747), 2.2px -5.1px 0.12px rgba(144, 83, 174, 0.747), -1.0px -4.0px 3.42px rgba(157, 52, 96, 0.747), -0.7px -3.0px 2px rgba(85, 8, 117, 0.803)
+}
+
+.title {
+    font-size: clamp(90%, 20vmin , 50vmin);
+    font-weight: 700;
+    margin: 0;
+    padding: 5%;
+    text-align: left;
+    color: rgb(190, 128, 215);
+    text-shadow: 0 0 10px rgb(80, 12, 92);
+    font-family: 'Playfair Display', 'Roboto', sans-serif;
+  }
+
+  .subtitle {
+    font-size: clamp(90%, 5vmin , 10vmin);
+    font-weight: 300;
+    margin: 0;
+    padding: 10%;
+    text-align: left;
+    color: rgba(190, 128, 215, 0.608);
+    text-shadow: 0 0 10px rgb(80, 12, 92);
+    font-family: 'Roboto', sans-serif;
+  }
+
+.pink-button {
+    display: inline-block;
+    background-color: #604aa4;
+    color: #c485c4;
+    font: inherit;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    max-height: clamp(30vh, 40vh , 100px);
+    font-size: calc(0.08 * clamp(30vh, 40vh , 100px));
+}
+
+.pink-button:hover {
+    background-color: #635883;
+    color: #ec61ec;
+    font: inherit;
+    border: none;
+    font-size: calc(0.08 * clamp(30vh, 40vh , 100px));
+}
+
+img.pink-btn-img {
+    max-width: calc(0.7 * clamp(30vh, 40vh , 100px));
+    max-height: calc(0.7 * clamp(30vh, 40vh , 100px));
+}
+
+.dropbtn {
+    background-color: #604aa4;
+    color: #c485c4;
+    padding: 1vw;
+    font-size: inherit;
+    border: none;
+    cursor: pointer;
+    min-width: 7.5vw;
+    border-radius: 0.5vw;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: auto;
+    max-height: 95%;
+    align-items: flex-start;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: contents;
+}
+
+.dd-button {
+    background-color: #644fa1;
+    color: #c485c4;
+    border: solid 0.1vw #c579c58c;
+    font: inherit;
+    cursor: pointer;
+}
+
+.dd-button:hover {
+    background-color: #635883;
+    color: #ec61ec;
+}
