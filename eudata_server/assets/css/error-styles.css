@@ -1,0 +1,112 @@
+
+span.err-grid-wrapper {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    grid-template-areas:
+        ". . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . ."
+        ". . . . one one one one one one . . . ."
+        ". . . . one one one one one one . . . ."
+        ". . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . ."
+        ". . . . . two two two two two . . . ."
+        ". . . . . two two two two two . . . ."
+        ". . . . . two two two two two . . . ."
+        ". . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . .";
+    
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+span.err-grid-one {
+    grid-area: one;
+    align-self: center;
+  }
+span.err-grid-two {
+    grid-area: two;
+    align-self: center;
+  }
+
+@media (max-width: 400px) {
+    span.err-grid-wrapper {
+        display: grid;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        grid-template-areas:
+            "."
+            "one"
+            "one"
+            "."
+            "."
+            "two"
+            "two"
+            ".";
+        
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+
+.error-title {
+    padding: 0px;
+    margin: 0;
+    top: 0;
+    font-family: "Playfair Display", "Roboto", sans-serif;
+    max-width: 100vw;
+    max-height: 100vh;
+    height: 100%;
+    width: 100%;
+    font-size: 50vmin;
+    font-weight: 700;
+    color: rgba(206, 18, 174, 0.79);
+    text-shadow: 0.0px 5.0px 0.2px rgba(245, 150, 222, 0.747), 5.8px 2.1px 0.02px rgba(157, 52, 96, 0.747), 4.2px -6.1px 0.32px rgba(144, 83, 174, 0.747), -4.0px -6.0px 0.42px rgba(157, 52, 96, 0.747), -3.6px 2.5px 0.02px rgba(157, 52, 96, 0.747), 4.8px 8.8px 0.02px rgba(157, 52, 96, 0.747), 9.6px -2.8px 0.02px rgba(249, 9, 109, 0.747), -0.7px -10.0px 0.02px rgba(85, 8, 117, 0.803)
+}
+
+.error-subtitle {
+    padding: 0px;
+    margin: 0;
+    top: 0;
+    font-family: "Roboto", sans-serif;
+    max-width: 100vw;
+    max-height: 100vh;
+    font-size: 10vmin;
+    font-weight: 400;
+    color: rgba(238, 4, 211, 0.79);
+    text-align: center;
+    text-shadow: 0.0px 2.0px 0.02px rgba(245, 150, 222, 0.747), 2.6px 2.1px 0.12px rgba(157, 52, 96, 0.747), 2.2px -2.1px 0.12px rgba(144, 83, 174, 0.747), -1.0px -2.0px 1.42px rgba(157, 52, 96, 0.747), -0.7px -1.0px 2px rgba(85, 8, 117, 0.803)
+}
+
+
+@media (max-width: 400px) {
+    span.err-grid-wrapper {
+        display: grid;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        grid-template-areas:
+            ". . ."
+            ". one ."
+            ". one ."
+            ". . ."
+            ". . ."
+            ". two ."
+            ". two ."
+            ". . .";
+        
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .error-title {
+        width: 100%;
+        text-align: center;
+    }
+    .error-subtitle {
+        width: 100%;
+        text-align: center;
+    }
+}

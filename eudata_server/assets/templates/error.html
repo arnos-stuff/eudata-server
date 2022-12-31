@@ -5,17 +5,24 @@
     <link href="https://fonts.cdnfonts.com/css/playfair-display" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/arno-web-styles.css">
+    <link rel="stylesheet" href="css/error-styles.css">
     </head>
     
     <script src="js/three.r134.min.js"></script>
     <script src="js/vanta.net.min.js"></script>
     
-    <body>
-        <div class="vanta-body">
-            <span class="error-title">404</span>
-            <span class="error-subtitle">Page not found</span>
-        </div>
-        <div class="vanta-body-container"></div>
+<body>
+    <div class="vanta-body">
+        <span class="err-grid-wrapper">
+            <span class="err-grid-one">
+                    <span class="error-title">{{ error_number }}</span>
+            </span>
+            <span class="err-grid-two">
+                    <span class="error-subtitle">{{ error_message }}</span>
+            </span>
+        </span>
+    </div>
+    <div class="vanta-body-container"></div>
         
     <script>
         VANTA.NET({
@@ -31,7 +38,6 @@
             maxDistance: 21.00,
             scrollSpeed: 0.50,
 
-        })
+        });
     </script>
-    
-    </body>
+</body>

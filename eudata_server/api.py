@@ -16,13 +16,16 @@ from eudata_server.tools.paths import (
     js_dir, sass_dir, data_dir
 )
 
-app = FastAPI()
-
 # Mount static files & templates
+
+app = FastAPI()
 
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 app.mount("/css", StaticFiles(directory=css_dir), name="css")
 app.mount("/js", StaticFiles(directory=js_dir), name="js")
+app.mount("/{rest:path}/static", StaticFiles(directory=static_dir), name="static")
+app.mount("/{rest:path}/css", StaticFiles(directory=css_dir), name="css")
+app.mount("/{rest:path}/js", StaticFiles(directory=js_dir), name="js")
 templates = Jinja2Templates(directory=templates_dir)
 
 # get metadata
@@ -71,24 +74,32 @@ async def tab(request: Request, dataflow_id: str):
 
 @app.get("/maps/{dataflow_id}", response_class=HTMLResponse)
 async def read_item(request: Request, dataflow_id: str):
-    df = dfquery(dataflow_id)
-    columns = df.columns.tolist()
-    textUnit = dfu.loc["text_unit"].values[0]
+    try:
+        df = dfquery(dataflow_id)
+        columns = df.columns.tolist()
+        textCode = df["UNIT"].unique()[0]
+    except:
+        raise StarletteHTTPException(status_code=500, detail="Woops ! No data found.")
+
     return templates.TemplateResponse(
         "maps.html",
         {
             "request": request,
             "dataflow_id": dataflow_id,
             "title": "Maps",
+            "columns": columns,
+            "textUnit": textUnit,
         }
     )
-
 
 @app.exception_handler(StarletteHTTPException)
 async def exception_handler(request: Request, exc: StarletteHTTPException):
     return templates.TemplateResponse(
-        "404.html",
+        "error.html",
         {
-            "request": request
-        }
+            "request": request,
+            "error_number": exc.status_code,
+            "error_message": exc.detail,
+        },
+        status_code=exc.status_code,
     )
