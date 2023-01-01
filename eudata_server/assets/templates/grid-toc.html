@@ -81,7 +81,7 @@
             row = rows[0];
           }
           console.log(row);
-          window.location.href = "http://localhost:8000/maps/"+row["Dataflow id"].toLowerCase();
+          window.location.href = "/maps/"+row["Dataflow id"].toLowerCase();
        }
 
        function gototab() {
@@ -99,7 +99,7 @@
             row = rows[0];
           }
           console.log(row);
-          window.location.href = "http://localhost:8000/tab/"+row["Dataflow id"].toLowerCase();
+          window.location.href = "/tab/"+row["Dataflow id"].toLowerCase();
        }
 
        function filterbyscheme(category_scheme_name) {

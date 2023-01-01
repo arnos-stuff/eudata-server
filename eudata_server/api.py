@@ -6,6 +6,7 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.exceptions import (
     RequestValidationError, HTTPException, ValidationError
 )
@@ -18,8 +19,11 @@ from eudata_server.backend.sdmx.base import (
 
 from eudata_server.tools.paths import (
     static_dir, templates_dir, css_dir,
-    js_dir, sass_dir, data_dir
+    js_dir, sass_dir, data_dir, package_dir
 )
+# config
+
+config = json.load(open(package_dir / "config.json", "r"))
 
 # Mount static files & templates
 
@@ -59,6 +63,8 @@ async def toc(request: Request):
         "categories": categories,
         "catnames": sorted(catnames),
         "title": "Table of Contents",
+        "remote": config["remote"],
+        "port": config["server"]["port"],
         }
     )
 
@@ -75,6 +81,8 @@ async def tab(request: Request, dataflow_id: str):
         "title": f"Dataset {dataflow_id}",
         "columns": columns,
         "rows": rows,
+        "remote": config["remote"],
+        "port": config["server"]["port"],
         })
 
 @app.get("/maps/{dataflow_id}", response_class=HTMLResponse)
@@ -102,6 +110,8 @@ async def maps(request: Request, dataflow_id: str):
             "title": "Maps",
             "unit_names": unit_names,
             **mapdata,
+            "remote": config["remote"],
+            "port": config["server"]["port"],
         }
     )
 
@@ -113,6 +123,8 @@ async def exception_handler(request: Request, exc: StarletteHTTPException):
             "request": request,
             "error_number": exc.status_code,
             "error_message": exc.detail,
+            "remote": config["remote"],
+            "port": config["server"]["port"],
         },
         status_code=exc.status_code,
     )

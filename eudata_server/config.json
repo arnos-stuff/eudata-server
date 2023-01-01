@@ -1,0 +1,16 @@
+{
+    "ssl": {
+        "key": "/home/arnov/arno-api/ssl-certif/server.key",
+        "cert": "/home/arnov/arno-api/ssl-certif/www_api_veletanlic_org.crt"
+    },
+
+    "server": {
+        "port": 8000,
+        "host": "0.0.0.0"
+    },
+    "local": {
+        "port": 8000,
+        "host": "127.0.0.1"
+    },
+    "remote": "https://api.veletanlic.org"
+}
