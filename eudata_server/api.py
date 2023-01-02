@@ -22,9 +22,12 @@ from eudata_server.tools.paths import (
     js_dir, sass_dir, data_dir, package_dir
 )
 # config
+cfg_fname = package_dir / "config.json"
 
-config = json.load(open(package_dir / "config.json", "r"))
-
+if cfg_fname.exists():
+    config = json.load(open(cfg_fname, "r"))
+else:
+    config = {}
 # Mount static files & templates
 
 app = FastAPI()
@@ -63,8 +66,6 @@ async def toc(request: Request):
         "categories": categories,
         "catnames": sorted(catnames),
         "title": "Table of Contents",
-        "remote": config["remote"],
-        "port": config["server"]["port"],
         }
     )
 
@@ -81,8 +82,6 @@ async def tab(request: Request, dataflow_id: str):
         "title": f"Dataset {dataflow_id}",
         "columns": columns,
         "rows": rows,
-        "remote": config["remote"],
-        "port": config["server"]["port"],
         })
 
 @app.get("/maps/{dataflow_id}", response_class=HTMLResponse)
@@ -110,8 +109,6 @@ async def maps(request: Request, dataflow_id: str):
             "title": "Maps",
             "unit_names": unit_names,
             **mapdata,
-            "remote": config["remote"],
-            "port": config["server"]["port"],
         }
     )
 
@@ -123,8 +120,6 @@ async def exception_handler(request: Request, exc: StarletteHTTPException):
             "request": request,
             "error_number": exc.status_code,
             "error_message": exc.detail,
-            "remote": config["remote"],
-            "port": config["server"]["port"],
         },
         status_code=exc.status_code,
     )
