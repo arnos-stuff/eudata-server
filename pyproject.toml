@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "eudata-server"
-version = "0.1.23"
+version = "0.1.24"
 description = ""
 authors = ["arnos-stuff <bcda0276@gmail.com>"]
 readme = "README.md"
@@ -17,7 +17,6 @@ fastapi = {extras = ["all"], version = "^0.88.0"}
 [tool.poetry.scripts]
 server = "eudata_server.server:cli"
 srv = "eudata_server.server:cli"
-rhttps = "eudata_server.tools.https:cli"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.19.4"
