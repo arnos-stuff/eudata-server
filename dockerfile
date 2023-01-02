@@ -55,6 +55,5 @@ RUN poetry install
 FROM python-base as production
 ENV FASTAPI_ENV=production
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
-WORKDIR /eudata_server
 EXPOSE 8000
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "api:app"]
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "eudata_server.api:app"]
