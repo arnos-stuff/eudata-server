@@ -1,8 +1,8 @@
-FROM python:3.8.10
+FROM ubuntu:latest
 
 RUN apt-get upgrade
-RUN apt-get install -y python-pip python-dev build-essential
-RUN pip install --upgrade pip
+RUN apt-get install -y python3.9
+RUN apt-get install -y python3-pip
 
 RUN pip install eudata-server==0.1.21
 
