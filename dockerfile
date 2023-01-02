@@ -7,6 +7,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install --upgrade pip
 
-RUN pip3 install eudata-server==0.1.21
+RUN pip3 install eudata-server==0.1.22
 
 ENTRYPOINT [ "srv prod" ]
