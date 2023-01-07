@@ -2,6 +2,7 @@ FROM python:3.9
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV PATH="/root/.local/bin:${PATH}"
 # Install dependencies
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
@@ -14,6 +15,7 @@ WORKDIR /app
 # Install the dependencies
 RUN poetry shell
 RUN poetry install
+
 
 EXPOSE 8000
 # Run the application
