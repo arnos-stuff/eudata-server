@@ -13,7 +13,6 @@ COPY . /app
 WORKDIR /app
 
 # Install the dependencies
-RUN poetry shell
 RUN poetry install
 
 
