@@ -15,5 +15,6 @@ WORKDIR /app
 RUN poetry shell
 RUN poetry install
 
+EXPOSE 8000
 # Run the application
-CMD ["srv" "prod" "--host" "0.0.0.0" "--port" "8080"]
+CMD ["srv" "prod" "--host" "0.0.0.0" "--port" "8000"]
