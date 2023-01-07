@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "eudata-server"
-version = "0.1.24"
+version = "0.1.26"
 description = ""
 authors = ["arnos-stuff <bcda0276@gmail.com>"]
 readme = "README.md"
