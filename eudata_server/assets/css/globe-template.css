@@ -1,0 +1,177 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    top: 0;
+    left: 0;
+    font-family: "Roboto", sans-serif;
+    width: 100vw;
+}
+
+
+.vanta-body-container {
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+span.grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 100%;
+    width: 100%;
+    grid-template-areas:
+        "one one one one one one one one one one one one one one"
+        ". . . . . . . . . . . . . ."
+        ". . two two two . . . . . . . . ."
+        ". . two two two . . . . . . . . ."
+        ". . two two two . . . . . . . . ."
+        ". . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . .";
+}
+span.grid-one {
+    grid-area: one;
+  }
+span.grid-two {
+    grid-area: two;
+  }
+
+
+div.top-bar {
+    background-color: #604aa4;
+    color: #efb0f1;
+    font-size: 1.5em;
+    padding: 10px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top;
+    text-align: center;
+    grid-area: one;
+    max-height: 10vh;
+}
+
+
+span.topbar-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+    grid-template-areas:
+        "one one one . . . . . three three . . . . . two two two"
+        "one one one . . . . . three three . . . . . two two two";
+}
+span.topbar-one {
+    grid-area: one;
+  }
+span.topbar-two {
+    grid-area: two;
+  }
+
+span.topbar-three {
+    grid-area: three;
+  }
+
+
+img.logo {
+    max-height: 50vh;
+    max-width: 30vw;
+    margin: 0 auto;
+    display: block;
+}
+
+.invisible-btn {
+  display: fit-content;
+  border: none;
+  background-color: transparent;
+  color: none;
+  border-radius: 2.5vw;
+  cursor: pointer;
+  font: inherit;
+  max-height: fit-content;
+}
+
+
+button.btn-sm {
+  display: flex;
+  border: none;
+  background-color: #311095b5;
+  color: #a731a7;
+  cursor: pointer;
+  font: inherit;
+  max-height: 100%;
+  font-size: auto;
+}
+
+button.btn-sm:hover {
+  background-color: #635883;
+  color: #ec61ec;
+  font: inherit;
+  border: none;
+}
+  
+  /**
+   * Popover Element AKA Tippy
+   */
+
+.dd-menu {
+width: 14.5rem;
+text-align: center;
+/* background-color: #604aa4; */
+}
+  
+  .dd-menu-title {
+    display: block;
+    padding-bottom: 1rem;
+    /* border-bottom: 1px solid #260a7b; */
+    /* color: #2f1381; */
+    text-align: center;
+  }
+  
+  .dd-menu-title,
+  .dd-menu-item {
+    padding: 0.5rem;
+  }
+  
+  .dd-menu-item {
+    display: block;
+    width: 100%;
+    background: inherit;
+    border: none;
+    border-radius: 0;
+    color: #a731a7;
+  }
+
+  .dd-menu-item:hover {
+    background: rgba(195, 91, 200, 0.6117647059);
+  }
+  
+  .dd-menu-item:first-of-type {
+    border-top: 1px solid #260a7b;
+    padding-top: 1rem;
+  }
+
+input.dd-input {
+    display: flexbox;
+    max-width: 100%;
+    min-width: 40%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 1%;
+    background-color: #604aa4;
+    top: 0;
+    left: 0;
+}
+
+input.dd-input:focus {
+    background-color: #a731a7;
+}

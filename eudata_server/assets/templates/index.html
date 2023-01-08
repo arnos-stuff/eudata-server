@@ -1,75 +1,35 @@
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Welcome</title>
-<link href="https://fonts.cdnfonts.com/css/playfair-display" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
-<link rel="stylesheet" href="css/arno-web-styles.css">
-<link rel="stylesheet" href="css/grid-display.css">
-<link rel="stylesheet" href="css/tippy/translucent-lgt-purple.css">
-<link rel="icon" type="image/x-icon" href="static/images/api.svg">
-</head>
+    {% extends "globe-template.html" %}
+    
+    {% block toptitle %}
+    Arno's super cool data API ! 
+    {% endblock %}
 
-<script src="js/three.r134.min.js"></script>
-<script src="js/vanta.globe.min.js"></script>
+    {% block restpage %}
+            <button id="eu-maps" class="invisible-btn" onclick="mapRedirect()">
+              <img src="static/images/eu-map.svg" alt="map of the EU" class="logo">
+            </button>
+            </span>
+          </span>
+      </div>
+    
+    <script>
+    function mapRedirect() {
+      window.location.href = "/toc";
+    }
+    </script>
 
-<body class="globe-body">
-
-  <div class="vanta-body">
-      <span class="grid-wrapper">
-        <span class="grid-one">
-          <!-- top purple bar for redirects -->
-          <div class="top-bar">
-          Arno's super cool data API ! 
-          </div>
-        </span>
-        <span class="grid-two">
-        <!-- map -->
-        <button id="eu-maps" class="invisible-btn" onclick="mapRedirect()">
-          <img src="static/images/eu-map.svg" alt="map of the EU" class="logo">
-        </button>
-        </span>
-      </span>
-  </div>
-
-  <div class="vanta-body-container"></div>
-
-<script>
-function mapRedirect() {
-  window.location.href = "/toc";
-}
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+      <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+      <script>
+      // With the above scripts loaded, you can call `tippy()` with a CSS
+      // selector and a `content` prop:
+      
+      mapbtn = tippy('#eu-maps', {
+        content: 'Go to the EU Maps page',
+        inertia: true,
+        interactive: true,
+        theme: 'translucent-lgt-purple',
+        placement: 'bottom',
+      });
 </script>
-
-
-<script>
-    VANTA.GLOBE({
-      el: ".vanta-body-container",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 50,
-      minWidth: 50,
-      forceAnimate: true,
-      scale: 1,
-      scaleMobile: 1,
-      color: 0xc53fff,
-      color2: 0xf299e2
-    })
-</script>
-
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-  <script>
-  // With the above scripts loaded, you can call `tippy()` with a CSS
-  // selector and a `content` prop:
-  
-  mapbtn = tippy('#eu-maps', {
-    content: 'Go to the EU Maps page',
-    inertia: true,
-    interactive: true,
-    theme: 'translucent-lgt-purple',
-    placement: 'bottom',
-  });
-</script>
-
-</body>
+{% endblock %}

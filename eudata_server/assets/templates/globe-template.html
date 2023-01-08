@@ -1,0 +1,134 @@
+<head>
+    {% include "header.html" %}
+    <title>Welcome</title> 
+    <script src="js/three.r134.min.js"></script>
+    <script src="js/vanta.globe.min.js"></script>
+</head>
+    
+    <body class="globe-body">
+        <div class="vanta-body-container" id="anim-canvas">
+    
+            <div class="vanta-body">
+                <span class="grid-wrapper">
+                <span class="grid-one">
+                    <!-- top purple bar for redirects -->
+                    <div class="top-bar">
+                        <span class="topbar-wrapper">
+                            <span class="topbar-one">
+                            Arno's Stuff !
+                            </span>
+                            <span class="topbar-three">
+                                {% block toptitle %}
+                                {{ super() }}
+                                {% endblock %}
+                            </span>
+                            <span class="topbar-two">
+                                <input type="color" class="dd-input"
+                                    id="colorSelectorNO1" name="bg-color-1"
+                                    value="#c53fff">
+                                <input type="color" class="dd-input" id="colorSelectorNO2" name="bg-color-2" value="#f299e2">
+
+                                <button class="btn-sm">Change Animation</button>
+                                <template id="bganim">
+                                    <div class="dd-menu">
+                                    <strong class="dd-menu-title">Choose an animation</strong>
+                                    
+                                        <button class="dd-menu-item" onclick="changeAnimation('trunk')">Trunk</button>
+                                        <button class="dd-menu-item" onclick="changeAnimation('circles')">Circles</button>
+                                        <button class="dd-menu-item" onclick="changeAnimation('globe')">Globe</button>
+                                    
+                                    </div>
+                                </template>
+                            </span>
+                        </span>
+                    </div>
+                </span>
+                <span class="grid-two">
+                {% block restpage %}
+                    {{ super() }}
+                    {% endblock %}
+                </span>
+                </span>
+            </div>
+      
+        </div>
+      
+      <script>
+        function updateColorNO1(evt) {
+            VANTA.current.setOptions({color: evt.target.value}) ;
+            VANTA.current.restart();
+        }
+
+        function updateColorNO2(evt) {
+            VANTA.current.setOptions({color2: evt.target.value}) ;
+            VANTA.current.restart();
+        }
+
+        function changeAnimation(value) {
+            VANTA.current.
+            
+        }
+
+
+        function startup() {
+            let colorBG1;
+            let colorBG2;
+
+            VANTA.GLOBE({
+            el: "#anim-canvas",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 50,
+            minWidth: 50,
+            forceAnimate: true,
+            scale: 1,
+            scaleMobile: 1,
+            color: 0xc53fff,
+            color2: 0xf299e2,
+            });
+
+            colorBG1 = document.querySelector("#colorSelectorNO1");
+            colorBG2 = document.querySelector("#colorSelectorNO2");
+
+            colorBG1.addEventListener("change", updateColorNO1, false);
+            colorBG1.addEventListener("input", updateColorNO1, false);
+            colorBG2.addEventListener("input", updateColorNO2, false);
+            colorBG2.addEventListener("change", updateColorNO2, false);
+        }
+
+        window.addEventListener("load", startup, false);
+
+        
+
+    </script>
+    
+
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script>
+// With the above scripts loaded, you can call `tippy()` with a CSS
+// selector and a `content` prop:
+document.addEventListener('DOMContentLoaded', function() {
+
+const template = document.getElementById('bganim')
+const container = document.createElement('div')
+container.appendChild(document.importNode(template.content, true))
+
+tippy('.btn-sm', {
+    content: container.innerHTML,
+    trigger: 'mouseenter', // mouseenter, click, focus; manual.
+    placement: 'bottom-end',
+    arrow: true,
+    theme: 'translucent-purple',
+    // arrowType: 'round',
+    animation: 'scale',
+    duration: [250, 200],
+    distance: 12,
+    interactive: true,
+    showOnInit: true, // to ease styling
+    allowHTML: true,
+    });
+});
+</script>    
+</body>
